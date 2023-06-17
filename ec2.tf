@@ -6,6 +6,7 @@ resource "aws_instance" "virtual_server" {
   availability_zone = var.aws_az
   key_name          = var.key_name
   depends_on        = [aws_key_pair.deployer]
+  user_data         = file("minikube.sh")
 
   tags = {
     Name        = "${var.instance_tag}"
